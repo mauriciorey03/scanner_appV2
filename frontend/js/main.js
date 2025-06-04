@@ -124,3 +124,39 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-volver-inicio').onclick = volverInicio;
     verificarCedula();
 });
+
+// main.js
+
+document.getElementById("scanBtn").onclick = async function() {
+    mostrarEstado("Enviando orden de escaneo...");
+    // Envía la orden al backend
+    try {
+        let resp = await fetch('http://127.0.0.1:8000/orden_escanear/local1', { method: 'POST' });
+        let data = await resp.json();
+        if (data.ok) {
+            mostrarEstado("Orden enviada, esperando escaneo...");
+            // Puedes hacer polling o WebSocket aquí para ver si el escaneo se completó
+        } else {
+            mostrarEstado("No se pudo enviar la orden. ¿El agente está conectado?");
+        }
+    } catch (err) {
+        mostrarEstado("Error conectando al backend: " + err);
+    }
+};
+
+function mostrarEstado(msg) {
+    document.getElementById("estado").innerText = msg;
+}
+
+// main.js
+
+// Llama cada 2 segundos para ver si el escaneo se completó
+setInterval(async () => {
+    let resp = await fetch('http://127.0.0.1:8000/logs');
+    let logs = (await resp.json()).logs;
+    // Busca el último evento de tipo "orden_escanear" o "envio_crm"
+    let ultimo = logs.reverse().find(log => log.local_id === "local1" && log.evento === "orden_escanear");
+    if (ultimo) {
+        mostrarEstado("Escaneo ejecutado, revisa CRM para resultado.");
+    }
+}, 2000);

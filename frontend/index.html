@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Scanneos Distribuidos - Demo Teclado</title>
+    <title>Scanneos Distribuidos - Demo </title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/modal.css">
 
@@ -15,7 +15,7 @@
     </div>
     <div class="explicacion">
         Haz clic para escanear remotamente en <b>Punto de información-1</b> y ver el resultado de una o varias facturas:<br>
-        <b>📄 Escanear factura(s) en C.C. Megamall</b>
+        <b>📄 Escanear factura(s) en C.C. Salitre Plaza </b>
     </div>
     <div id="form-cedula" class="input-group">
         <label for="input-cedula"><b>Ingrese la cédula del cliente</b></label>
@@ -35,6 +35,10 @@
         <button id="btn-redimir" class="btn-redimir">Redimir premios</button>
         <a href="politica-de-privacidad.html" class="politica-privacidad-link">Consulte nuestra Política de privacidad</a> 
         <a href="#" class="politica-privacidad-link" id="btn-escanear-qr">Registrarse a tráves de QR</a>
+        
+	    <P>2025 ©</P> 
+        <a href="http://colectivoingenio.com" target="_blank" style="color:#7A8CA5;text-decoration:underline;">Colectivo Ingenio SAS</a>
+        <a href="https://wegrowcrm.com/" target="_blank">WeGrowCRM</a>
 
         <script src="js/modal.js"></script>
         <div id="qrModal" class="modal">
@@ -51,9 +55,13 @@
     </div>
     </div>
     <div class="asociado" id="asociado"></div>
+    <div id="estado"></div>
+
     <div class="status" id="status"></div>
     <div class="cards" id="cards"></div>
     <div id="confirm-area" style="display:none;">
+        <button id="scanBtn">📄 Escanear factura(s) en Local 1</button>
+
         <button class="btn-secundario" id="btn-otra">Escanear otra más</button>
         <button id="btn-confirmar-envio" class="btn-confirmar">Confirmar envío</button>
     </div>

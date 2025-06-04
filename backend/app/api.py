@@ -1,26 +1,28 @@
 # app/api.py
+
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
-from app.storage import guardar_factura, listar_facturas
+from app.ws import enviar_orden_escanear, get_connected_agents
+from app.logs import registrar_log, listar_logs
 
 router = APIRouter()
 
-@router.post("/upload_ocr")
-async def upload_ocr(request: Request):
-    """
-    Recibe JSON de un agente, lo almacena.
-    Espera:
-    {
-      "local_id": "local1",
-      "ocr": { ...datos OCR... }
-    }
-    """
-    data = await request.json()
-    print("[BACKEND] JSON recibido:", data)
-    guardar_factura(data)
-    return JSONResponse({"status": "ok", "msg": "Factura recibida", "facturas_total": len(listar_facturas())})
+@router.post("/orden_escanear/{local_id}")
+async def api_orden_escanear(local_id: str):
+    ok = await enviar_orden_escanear(local_id)
+    return {"ok": ok}
 
-@router.get("/facturas")
-def get_facturas():
-    """Devuelve todas las facturas recibidas."""
-    return {"facturas": listar_facturas()}
+@router.post("/log_event")
+async def api_log_event(request: Request):
+    evento = await request.json()
+    registrar_log(evento)
+    return {"ok": True}
+
+@router.get("/agentes_conectados")
+def api_agentes():
+    return {"agentes": get_connected_agents()}
+
+@router.get("/logs")
+def api_logs():
+    return {"logs": listar_logs()}
+
