@@ -1,0 +1,147 @@
+/* Estilos del Overlay del Modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Permanece fijo en la ventana de visualización */
+    z-index: 1000; /* Alto z-index para que esté por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%; /* Cubre todo el ancho */
+    height: 100%; /* Cubre toda la altura */
+    overflow: auto; /* Permite scroll si el contenido es muy largo */
+    background-color: rgba(0,0,0,0.6); /* Fondo semi-transparente negro */
+    display: flex; /* Usamos flexbox para centrar el contenido */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+/* Contenido del Modal */
+.modal-content {
+    background-color: #fefefe;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%; /* Ancho responsivo */
+    max-width: 400px; /* Ancho máximo del modal */
+    text-align: center;
+    position: relative; /* Para posicionar el botón de cerrar */
+}
+
+/* Título del Modal */
+.modal-content h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+/* Párrafos de texto dentro del modal */
+.modal-content p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Contenedor para el QR */
+.qr-code-placeholder {
+    margin: 25px auto;
+    width: 200px; /* Tamaño fijo para el QR */
+    height: 200px; /* Asegura un aspecto cuadrado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #eee; /* Borde sutil alrededor del QR */
+    border-radius: 5px;
+    background-color: #fff; /* Fondo blanco para el QR */
+}
+
+.qr-code-placeholder img {
+    max-width: 100%; /* Asegura que la imagen QR no se desborde */
+    height: auto;
+    display: block; /* Elimina espacio extra debajo de la imagen */
+}
+
+/* Botón de cerrar (la 'x') */
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Botón "Entendido" del modal */
+.modal-button {
+    background-color: #007bff; /* Color azul de los botones de tu app */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+    background-color: #0056b3;
+}
+
+.modal-info {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 5px;
+}
+
+/* Opcional: animación de entrada para el modal */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal.show { /* Clase para cuando el modal esté visible y animado */
+    display: flex;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal.show .modal-content {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* css/modal.css */
+
+.modal {
+    display: none; /* Asegúrate de que esté inicialmente oculto */
+    /* ... el resto de tus estilos para el overlay ... */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    /* display: flex; /* Esto se aplica cuando tiene la clase .show */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex; /* ¡Esto es crucial para que se muestre! */
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* ... el resto de tus estilos del modal ... */

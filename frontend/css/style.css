@@ -1,0 +1,370 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-image: url('../img/wallpaper.jpg');
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 540px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 2em 2.5em;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px #0002;
+}
+.header-content {
+    display: flex; /* Convierte el contenedor en un contenedor flex */
+    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+    /* Puedes añadir un gap para espacio entre el h1 y la imagen */
+    gap: 20px; /* Ajusta este valor según el espacio que desees */
+}
+.politica-privacidad-link {
+    display: block; /* Para que ocupe todo el ancho disponible y se alinee a la izquierda por defecto */
+    text-align: center; /* Aunque display:block lo hace, no está de más ser explícito */
+    color: #007bff; /* Color azul típico para enlaces, puedes ajustarlo */
+    text-decoration: underline; /* Subrayado por defecto */
+    font-size: 0.9em; /* Un poco más pequeño si lo deseas */
+}
+
+/* Puedes añadir un estilo al pasar el ratón por encima si quieres */
+.politica-privacidad-link:hover {
+    color: #0056b3; /* Un azul más oscuro al pasar el ratón */
+}
+.logo {
+    max-width: 150px;
+    height: auto; 
+}
+h1 {
+    color: #1575d4;
+    margin-top: 0;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+.explicacion {
+    font-size: 1.08em;
+    color: #222d3c;
+    margin-bottom: 18px;
+}
+.input-group {
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+#input-cedula {
+    font-size: 1.35em;
+    letter-spacing: 0.07em;
+    width: 230px;
+    margin: 18px auto 0 auto;
+    display: block;
+    padding: 12px 13px;
+    border-radius: 8px;
+    border: 1.5px solid #b7d6ef;
+    text-align: center;
+    outline: none;
+    background: #fafdff;
+}
+#input-cedula:read-only {
+    background: #fafdff;
+}
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(4, 65px);
+    gap: 13px;
+    justify-content: center;
+    max-width: 300px;
+    margin: 18px auto 0 auto;
+}
+.key {
+    background: #f7f8fb;
+    border-radius: 13px;
+    border: 1.6px solid #d1d4da;
+    font-size: 1.5em;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: background 0.13s, border 0.13s;
+}
+
+
+
+.key:active {
+    background: #c3e0ff;
+    border-color: #1575d4;
+}
+.key-borrar {
+    background: #ffe5e5;
+    color: #c00;
+    font-size: 1.1em;
+    grid-column: 2/4;
+}
+.key-borrar span {
+    font-size: 1em;
+    margin-left: 0.2em;
+}
+
+.key-borrar svg {
+    width: 36px;
+    height: 24px;
+    vertical-align: middle;
+}
+.key-borrar:active {
+    background: #fcbdbd;
+}
+.key-cero {
+    grid-column: 1/2;
+}
+.buttons {
+    display: flex;
+    gap: 1em;
+    margin-top: 1.7em;
+    justify-content: center;
+}
+.btn-confirmar, .btn-cancelar, .btn-redimir {
+    padding: 15px 32px;
+    background: linear-gradient(90deg, #1575d4, #63c0f5);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.07em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #1575d428;
+    transition: background 0.19s, box-shadow 0.19s;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+.btn-confirmar:disabled {
+    background: #b4d6f4;
+    color: #667;
+    cursor: not-allowed;
+}
+.btn-cancelar {
+    background: linear-gradient(90deg, #ffaaaa, #ffd6d6);
+    color: #c00;
+}
+.btn-redimir {
+    background: linear-gradient(90deg, #36ad64, #a9ffb7);
+    color: rgb(14, 58, 27);
+}
+.btn-cancelar:disabled {
+    background: #f6e3e3;
+    color: #aaa;
+    cursor: not-allowed;
+}
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+    margin-top: 2em;
+}
+.card {
+    background: #f5fafd;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px #0001;
+    padding: 1.3em 1.2em;
+    border: 1.5px solid #e1e8ef;
+    margin-bottom: 0.3em;
+    transition: box-shadow 0.18s, border-color 0.18s;
+}
+.card:hover {
+    box-shadow: 0 6px 32px #1373e11a;
+    border-color: #63c0f5;
+}
+.card .titulo {
+    font-weight: bold;
+    color: #1575d4;
+    font-size: 1.11em;
+    margin-bottom: .2em;
+}
+.card .dato {
+    color: #272c3a;
+    margin-bottom: .2em;
+}
+.card .prefijo {
+    font-size: .96em;
+    color: #888;
+}
+.asociado {
+    background: #fcfffb;
+    color: #267025;
+    padding: 2px 7px;
+    font-size: .97em;
+    border-radius: 5px;
+    margin-bottom: 1em;
+    display: inline-block;
+}
+#mensaje-confirmacion {
+    display: none;
+    margin-top: 1.5em;
+    background: #d6f5d6;
+    color: #237823;
+    border: 1.5px solid #61e97d;
+    padding: 1.1em 1.5em;
+    border-radius: 9px;
+    font-size: 1.1em;
+    box-shadow: 0 3px 14px #0bce4032;
+    text-align: center;
+}
+#volver-inicio-area {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.2em;
+}
+#volver-inicio-area button {
+    margin-top: 0;
+}
+#confirm-area {
+    margin-top: 1.2em;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+}
+.btn-secundario {
+    background: #e1f0fb;
+    color: #2578a0;
+    padding: 13px 24px;
+    border-radius: 7px;
+    font-size: 1.07em;
+    border: none;
+}
+.btn-secundario:hover {
+    background: #a5dcff;
+    color: #114969;
+}
+.status {
+    min-height: 26px;
+    color: #226;
+    margin-top: 16px;
+    font-size: 1em;
+    text-align: center;
+}
+
+/* Estilos del Overlay del Modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Permanece fijo en la ventana de visualización */
+    z-index: 1000; /* Alto z-index para que esté por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%; /* Cubre todo el ancho */
+    height: 100%; /* Cubre toda la altura */
+    overflow: auto; /* Permite scroll si el contenido es muy largo */
+    background-color: rgba(0,0,0,0.6); /* Fondo semi-transparente negro */
+    display: flex; /* Usamos flexbox para centrar el contenido */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+/* Contenido del Modal */
+.modal-content {
+    background-color: #fefefe;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%; /* Ancho responsivo */
+    max-width: 400px; /* Ancho máximo del modal */
+    text-align: center;
+    position: relative; /* Para posicionar el botón de cerrar */
+}
+
+/* Título del Modal */
+.modal-content h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+/* Párrafos de texto dentro del modal */
+.modal-content p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Contenedor para el QR */
+.qr-code-placeholder {
+    margin: 25px auto;
+    width: 200px; /* Tamaño fijo para el QR */
+    height: 200px; /* Asegura un aspecto cuadrado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #eee; /* Borde sutil alrededor del QR */
+    border-radius: 5px;
+    background-color: #fff; /* Fondo blanco para el QR */
+}
+
+.qr-code-placeholder img {
+    max-width: 100%; /* Asegura que la imagen QR no se desborde */
+    height: auto;
+    display: block; /* Elimina espacio extra debajo de la imagen */
+}
+
+/* Botón de cerrar (la 'x') */
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Botón "Entendido" del modal */
+.modal-button {
+    background-color: #007bff; /* Color azul de los botones de tu app */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+    background-color: #0056b3;
+}
+
+.modal-info {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 5px;
+}
+
+/* Opcional: animación de entrada para el modal */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal.show { /* Clase para cuando el modal esté visible y animado */
+    display: flex;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal.show .modal-content {
+    animation: slideIn 0.3s ease-out;
+}

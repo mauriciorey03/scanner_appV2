@@ -1,0 +1,14 @@
+#(para backend FastAPI):
+fastapi
+uvicorn
+python-socketio[asyncio_server]
+requests
+openai
+pillow
+python-multipart
+
+#(para agente local):
+python-socketio
+requests
+pillow
+twain  

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Scanneos Distribuidos - Demo Teclado</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="header-content">
+        <h1>Scanneos Distribuidos</h1>
+        <img src="img/logo.png" alt="Logo" class="logo">
+    </div>
+    <div class="explicacion">
+        Haz clic para escanear remotamente en <b>Punto de información-1</b> y ver el resultado de una o varias facturas:<br>
+        <b>📄 Escanear factura(s) en C.C. Megamall</b>
+    </div>
+    <div id="form-cedula" class="input-group">
+        <label for="input-cedula"><b>Ingrese la cédula del cliente</b></label>
+        <input id="input-cedula" type="text" maxlength="15" inputmode="none" readonly placeholder="Ingrese documento">
+        <div id="teclado"></div>
+        <div class="buttons">
+            <button id="btn-confirmar" class="btn-confirmar" disabled>Confirmar y escanear factura(s)</button>
+            <button class="btn-cancelar" id="btn-cancelar" disabled>
+                
+                <svg width="22" height="22" fill="none" viewBox="0 0 22 22">
+                    <circle cx="11" cy="11" r="11" fill="#ffd6d6"/>
+                    <path d="M7 7l8 8M15 7l-8 8" stroke="#d32626" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Limpiar campos
+            </button>
+        </div>
+        <button id="btn-redimir" class="btn-redimir">Redimir premios</button>
+        <a href="politica-de-privacidad.html" class="politica-privacidad-link">Consulte nuestra Política de privacidad</a> 
+        <a href="#" class="politica-privacidad-link" id="btn-escanear-qr">Registrarse a tráves de QR</a>
+
+        <script src="js/modal.js"></script>
+        <div id="qrModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Registro QR</h2>
+            <p>Escanee el código QR con su dispositivo móvil para registrarse.</p>
+            <div class="qr-code-placeholder">
+                <img src="img/frame.png" alt="Código QR de registro">
+                </div>
+            <p class="modal-info">Asegúrese de tener conexión a internet en su dispositivo.</p>
+            <button class="modal-button" id="btn-modal-cerrar">Entendido</button>
+        </div>
+    </div>
+    </div>
+    <div class="asociado" id="asociado"></div>
+    <div class="status" id="status"></div>
+    <div class="cards" id="cards"></div>
+    <div id="confirm-area" style="display:none;">
+        <button class="btn-secundario" id="btn-otra">Escanear otra más</button>
+        <button id="btn-confirmar-envio" class="btn-confirmar">Confirmar envío</button>
+    </div>
+    <div id="mensaje-confirmacion"></div>
+    <div id="volver-inicio-area" style="display:none;">
+        <button id="btn-volver-inicio" class="btn-confirmar">Volver a comenzar</button>
+    </div>
+</div>
+<script src="js/calculadora.js"></script>
+<script src="js/demo.js"></script>
+<script src="js/main.js"></script>
+<script src="js/modal.js"></script>
+
+</body>
+</html>
+
+
+<!-- redimir premios -->
+<!-- posibilidad de registrar QR -->
+<!-- firma -->
+<!-- política de privacidad -->
+
+
