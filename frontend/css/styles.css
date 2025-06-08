@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: #eaeaea;
+}
+.main-container {
+    display: flex;
+    height: 100vh;
+}
+.left-panel {
+    background: #204b92;
+    color: #fff;
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 14px 0 14px;
+    min-width: 340px;
+}
+.left-panel {
+    background: #204b92;
+    color: #fff;
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 30px;
+    min-width: 380px;
+}
+.left-panel h2 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.13;
+}
+.left-panel p {
+    font-size: 1.14rem;
+    font-weight: 400;
+    color: #d8e2f1;
+    margin-bottom: 0;
+}
+/* Controles Cédula Asociada */
+.cedula-controls {
+    background: rgba(255,255,255,0.10);
+    border-radius: 18px;
+    padding: 32px 26px 24px 26px;
+    width: 100%;
+    max-width: 370px;
+    margin: 0 auto;
+    box-shadow: 0 2px 18px 0 rgba(32,75,146,0.09);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    margin-top: 38px;
+    margin-bottom: 0;
+    min-height: 220px;
+}
+.cedula-controls .cedula-label {
+    color: #d8e2f1;
+    margin-bottom: 10px;
+    font-size: 1.13rem;
+}
+.cedula-tag {
+    background: #c4e014;
+    color: #204b92;
+    padding: 8px 18px;
+    border-radius: 7px;
+    font-size: 1.17rem;
+    font-weight: 700;
+    display: inline-block;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+.btn-anadir {
+    background: #c4e014;
+    color: #204b92;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 0;
+    width: 100%;
+    font-size: 1.1rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    margin-bottom: 14px;
+    margin-top: 4px;
+    cursor: pointer;
+    transition: background 0.13s;
+}
+.btn-anadir:hover { background: #d3f324; }
+.btn-confirmar {
+    background: #0a2660;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 0;
+    width: 100%;
+    font-size: 1.1rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.13s;
+}
+.btn-confirmar:hover { background: #163c91; }
+/* Panel derecho - facturas */
+.right-panel {
+    background: #efefef;
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 400px;
+    padding: 0;
+    overflow: hidden;
+}
+/* Contenedor de formulario inicial */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 370px;
+    margin: auto;
+}
+.input-box {
+    width: 95%;
+    height: 50px;
+    border-radius: 12px;
+    border: 1.5px solid #c5c5c5;
+    margin-bottom: 35px;
+    font-size: 2rem;
+    text-align: center;
+    background: #fff;
+    outline: none;
+    letter-spacing: 2px;
+    color: #204b92;
+}
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    width: 100%;
+    margin-bottom: 28px;
+}
+.key {
+    background: #fff;
+    border: 1.5px solid #d1d1d1;
+    border-radius: 18px;
+    font-size: 2rem;
+    color: #204b92;
+    font-weight: 700;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(60,60,90,0.09);
+    user-select: none;
+    transition: background 0.12s, transform 0.09s;
+}
+.key:active {
+    background: #dde8fa;
+    transform: scale(0.97);
+}
+.buttons-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.btn {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-size: 1.1rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.13s;
+}
+.btn-confirmar {
+    background: #0a2660;
+    color: #fff;
+    margin-right: 10px;
+}
+.btn-confirmar:hover:not(:disabled) {
+    background: #163c91;
+}
+.btn-limpiar {
+    background: #c4e014;
+    color: #204b92;
+}
+.btn-limpiar:hover:not(:disabled) {
+    background: #d3f324;
+}
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+/* Panel facturas */
+#panel-facturas {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0 auto;
+}
+.facturas-header {
+    background: #fff;
+    padding: 20px 30px;
+    border-bottom: 2px solid #c4e014;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+.facturas-container {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 24px 24px 10px 24px;
+    min-height: 320px;
+    background: #efefef;
+}
+.factura-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.factura-card {
+    background: linear-gradient(120deg, #e8f1fa 70%, #cbe0fa 100%);
+    border-radius: 12px;
+    border: 2px solid #c4e014;
+    box-shadow: 0 4px 15px rgba(32,75,146,0.1);
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.factura-card.externa {
+    background: linear-gradient(120deg, #fff8e1 70%, #ffecb3 100%);
+    border: 2px solid #ffc107;
+    box-shadow: 0 4px 15px rgba(255,193,7,0.13);
+}
+.tienda-header {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #204b92;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #c4e014;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+.factura-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    font-size: 0.98rem;
+    margin-bottom: 10px;
+}
+.factura-info .campo {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+}
+.factura-info .campo strong {
+    color: #204b92;
+    font-weight: 600;
+}
+.factura-info .campo span {
+    color: #333;
+    font-weight: 500;
+}
+.prefijo-info {
+    color: #6c757d;
+    font-size: 0.92rem;
+    font-style: italic;
+    margin-bottom: 6px;
+}
+.valor-total {
+    background: rgba(196, 224, 20, 0.23);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.13rem;
+    font-weight: 700;
+    color: #204b92;
+    margin-top: 7px;
+}
+.mensaje-advertencia {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    border-radius: 8px;
+    font-size: 0.96rem;
+    line-height: 1.3;
+    padding: 12px 24px 12px 10px;
+    margin-top: 16px;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    min-height: 48px;
+    word-break: break-word;
+}
+.mensaje-advertencia:before {
+    content: "⚠️";
+    margin-right: 7px;
+    font-size: 1.1em;
+}
+.btn-eliminar {
+    position: absolute;
+    right: 16px;
+    top: 20px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: all 0.2s;
+}
+.btn-eliminar:hover {
+    background: #c82333;
+    transform: scale(1.1);
+}
+.tipo-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.tipo-badge.interno {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.tipo-badge.externo {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+/* Éxito */
+.btn-exito {
+    background: #c4e014;
+    color: #204b92;
+    border-radius: 15px;
+    padding: 25px 40px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(196, 224, 20, 0.3);
+}
+.hidden {
+    display: none !important;
+}
+/* Responsive */
+@media (max-width: 900px) {
+    .main-container { flex-direction: column; height: auto; }
+    .left-panel, .right-panel { min-width: unset; width: 100vw; }
+    .right-panel { min-width: unset; width: 100vw; }
+    #panel-facturas { max-width: 99vw; }
+    .facturas-header, .acciones-facturas { padding-left: 12px; padding-right: 12px;}
+    .facturas-container { padding-left: 10px; padding-right: 10px;}
+}
+@media (max-width: 500px) {
+    .form-container { width: 96vw; }
+    .facturas-header { padding: 12px; }
+    .factura-card { padding: 10px; }
+    .btn-eliminar { top: 9px; right: 7px; }
+}
