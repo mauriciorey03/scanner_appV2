@@ -40,7 +40,45 @@
             font-size: 1.15rem;
             color: #d8e2f1;
             margin-top: 0;
+            margin-bottom: 30px;
         }
+        
+        /* Estilos para la flecha de retorno */
+        .back-arrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+        
+        .back-arrow:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateX(-5px);
+        }
+        
+        .back-arrow svg {
+            width: 32px;
+            height: 32px;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-arrow:hover svg {
+            transform: translateX(-3px);
+        }
+        
+        .back-arrow span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
         .right-panel {
             background: #efefef;
             flex: 1.7;
@@ -139,6 +177,16 @@
             .right-panel {
                 padding: 22px 1vw;
             }
+            .back-arrow {
+                padding: 12px 16px;
+            }
+            .back-arrow svg {
+                width: 28px;
+                height: 28px;
+            }
+            .back-arrow span {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -154,6 +202,14 @@
                     Explora los premios disponibles y redime tus puntos según la categoría.<br>
                     Selecciona el premio que más te guste.
                 </p>
+                
+                <!-- Flecha de retorno -->
+                <div class="back-arrow" onclick="goBack()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Regresar</span>
+                </div>
             </div>
         </div>
         <!-- Panel Derecho -->
@@ -232,5 +288,15 @@
             <!-- Puedes agregar más categorías aquí -->
         </div>
     </div>
+
+    <script>
+        function goBack() {
+            // Opción 1: Ir a la página anterior del historial
+            window.history.back();
+            
+            // Opción 2: Si quieres ir a una página específica, descomenta la línea siguiente:
+            // window.location.href = 'index.html';
+        }
+    </script>
 </body>
 </html>
