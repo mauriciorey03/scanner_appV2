@@ -1,0 +1,81 @@
+﻿var loadHojaVida = function () {
+    ndoc = $('#txtNdoc').val();
+    abrirDialogo('/Registrar/Contacto/FormHojaVida_ajax', { 'ndoc': ndoc }, '', 'modal-lg');
+}
+var loadHojaVidaNdoc = function (ndoc) {
+    ndoc = $('#dvCedulaContacto #txtNdoc').val();
+    if (ndoc != '') {
+        cerrarDialogo('dvCedulaContacto');
+        abrirDialogo('/Registrar/Contacto/FormHojaVida_ajax', { 'ndoc': ndoc }, '', 'modal-lg');
+    } else {
+        mensajeAlerta('Debe ingresar un número de documento');
+    }
+}
+////////////////////////Cargar Instructivo Campañas/////////////////////////////////////////////////////////////////////////////
+var loadCampanias = function () { // cargar campañas en el boton flotante quickNav    
+    abrirDialogo('/Registrar/Campanias/FormCampaniasInstructivo_ajax', { }, '', 'modal-lg');
+}
+
+var loadCampaniasInstructivo = function (camId) { // cargar el instructivo
+    var params = {
+        'accion': 1,
+        'camId': camId
+    };
+    ajaxSend('/Registrar/Campanias/FormInstructivo_ajax', params, 'dvInstructivo', function () { mostrarInstructivo();});   
+ 
+}
+
+var mostrarInstructivo = function (accion) {//mostrar capas
+    if (accion == 1) {
+        $('#dvLstCampaniasInstruct').show('fast', function () { $('#dvInstructivo').hide('fast').html(''); });
+    }
+    else {
+        $('#dvInstructivo').show('fast', function () { $('#dvLstCampaniasInstruct').hide('fast'); });
+    }
+}
+
+///////////////////////////////////////////Cargar Informacion Locales ////////////////////////////////////////////////////////////
+var loadLocatarios = function () { // cargar locatarios en el boton flotante quickNav    
+    abrirDialogo('/Registrar/Locatario/FormListadoLocalFiltros_ajax', {}, '', 'modal-lg');
+}
+
+var loadLocatariosInformacion = function (locId) { // cargar el instructivo
+    var params = {
+        'accion': 1,
+        'locId': locId
+    };
+    ajaxSend('/Registrar/Locatario/FormListadoLocalInfo_ajax', params, 'dvInfoLocal', function () { mostrarInformacion() });
+
+}
+
+var mostrarInformacion = function (accion) {//mostrar capas
+    if (accion == 1) {
+        $("#dvLstVideo, #dvFiltros").show('fast', function () { $("#dvInfoLocal").hide('fast').html(''); });
+    }
+    else {
+        $("#dvInfoLocal").show('fast', function () { $("#dvLstVideo,#dvFiltros").hide('fast'); });
+    }
+}
+
+var listaLocal = function () {
+    var categoria = '', nomLocal = '';
+    if ($("#ddlFiltroCategoria").length) {
+        categoria = $('#ddlFiltroCategoria').val()
+    }
+    if ($("#txtFiltroLocal").length) {
+        nomLocal = $('#txtFiltroLocal').val()
+    }
+    var params = {
+        'accion': 0,
+        'ddlCategoria': categoria,
+        'txtNombre': nomLocal
+    };
+    ajaxSend(
+        './Locatario/FormListadoLocal_ajax'
+        , params
+        , 'dvLstVideo'
+        , function () {
+            //$('#dvFormulario').fadeOut('slow', function () { $('#dvLocatario').fadeIn('slow'); }).html('');
+        }
+    )
+}

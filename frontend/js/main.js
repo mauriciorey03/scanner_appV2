@@ -50,13 +50,27 @@ confirmarBtn.addEventListener('click', () => {
     anadirFactura();
 });
 
-// Añadir otra factura
-document.getElementById('btnOtraFactura').addEventListener('click', anadirFactura);
+function scrollToLastInvoice() {
+    setTimeout(() => {
+        const facturesContainer = document.querySelector('.facturas-container');
+        const lista = document.getElementById('factura-lista');
+        
+        if (facturesContainer && lista.children.length > 0) {
+            // Hacer scroll en el contenedor que tiene el scroll
+            facturesContainer.scrollTop = facturesContainer.scrollHeight;
+        }
+    }, 200);
+}
 
+// Añadir otra factura -
+document.getElementById('btnOtraFactura').addEventListener('click', anadirFactura);
+let indiceActual = 0;
 function anadirFactura() {
-    const ejemplo = ejemplos[Math.floor(Math.random() * ejemplos.length)];
+    const ejemplo = ejemplos[indiceActual];
     const factura = {...ejemplo, cedula: cedulaActual};
     facturas.push(factura);
+    indiceActual++;
+
     renderFacturas();
 }
 
@@ -97,8 +111,8 @@ function renderFacturas() {
         }
         lista.appendChild(div);
     });
-    // Scroll automático al último elemento
-    lista.scrollTop = lista.scrollHeight;
+    scrollToLastInvoice();
+
 }
 
 // === Confirmar y finalizar ===
@@ -144,7 +158,7 @@ document.getElementById('btnFinalizar').addEventListener('click', () => {
     
     // Redirigir a index.html después de mostrar el mensaje
     setTimeout(() => {
-        window.location.href = 'index.html';
+        window.location.href = 'WeGrowFacturas.html';
     }, 4000);
 });
 // Inicial

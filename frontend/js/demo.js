@@ -3,7 +3,7 @@ const ejemplos = [
     {
         "titular": "Consumidor Final",
         "documento": "2222222222",
-        "tienda": "CADENA COMERCIAL OXXO COLOMBIA S.A.S",
+        "tienda": "CADENA COMERCIAL EXITO S.A.S",
         "NIT": "900262579",
         "contacto": null,
         "fecha_compra": "2023-05-16",
@@ -12,9 +12,9 @@ const ejemplos = [
         "tipo": "interno"
     },
     {
-        "titular": "Supermercado XYZ S.A.S.",
-        "documento": "1098670285",
-        "tienda": "Supermercado XYZ S.A.S.",
+        "titular": "Consumidor Final",
+        "documento": "2222222222",
+        "tienda": "FALABELLA S.A.S.",
         "NIT": "900123456",
         "contacto": "3001234567",
         "fecha_compra": "2025-03-03",
@@ -23,9 +23,9 @@ const ejemplos = [
         "tipo": "externo"
     },
     {
-        "titular": "Juan Perez",
-        "documento": "1020304050",
-        "tienda": "TIENDAS D1 S.A.S.",
+        "titular": "Consumidor Final",
+        "documento": "2222222222",
+        "tienda": "TENNIS S.A.S.",
         "NIT": "800900123",
         "contacto": null,
         "fecha_compra": "2024-06-12",
@@ -34,8 +34,8 @@ const ejemplos = [
         "tipo": "interno"
     },
     {
-        "titular": "Droguería Nacional S.A.",
-        "documento": "1053482765",
+        "titular": "Consumidor Final",
+        "documento": "2222222222",
         "tienda": "DROGUERÍA NACIONAL S.A.",
         "NIT": "900456789",
         "contacto": "info@droguerianacional.com",
@@ -45,8 +45,8 @@ const ejemplos = [
         "tipo": "interno"
     },
     {
-        "titular": "Carlos Méndez",
-        "documento": "1009876543",
+        "titular": "Consumidor Final",
+        "documento": "2222222222",
         "tienda": "ÉXITO S.A.",
         "NIT": "890900943",
         "contacto": "3209876543",
@@ -56,8 +56,8 @@ const ejemplos = [
         "tipo": "externo"
     },
     {
-        "titular": "Andrea Giraldo",
-        "documento": "1144112233",
+        "titular": "Consumidor Final",
+        "documento": "2222222222",
         "tienda": "ALKOSTO S.A.S.",
         "NIT": "900222334",
         "contacto": null,
@@ -67,8 +67,8 @@ const ejemplos = [
         "tipo": "interno"
     },
     {
-        "titular": "Miguel Torres",
-        "documento": "1011002223",
+        "titular": "Consumidor Final",
+        "documento": "2222222222",
         "tienda": "TIENDAS ARA S.A.S.",
         "NIT": "900302113",
         "contacto": "3013344556",
@@ -79,7 +79,7 @@ const ejemplos = [
     },
     {
         "titular": "Consumidor Final",
-        "documento": "1199887766",
+        "documento": "2222222222",
         "tienda": "JUMBO COLOMBIA S.A.",
         "NIT": "860002405",
         "contacto": "servicio@jumbo.com.co",
@@ -89,8 +89,8 @@ const ejemplos = [
         "tipo": "interno"
     },
     {
-        "titular": "Olga Rueda",
-        "documento": "1044118855",
+        "titular": "Consumidor Final",
+        "documento": "2222222222",
         "tienda": "OLÍMPICA S.A.",
         "NIT": "890100213",
         "contacto": null,
@@ -100,8 +100,8 @@ const ejemplos = [
         "tipo": "interno"
     },
     {
-        "titular": "José Martínez",
-        "documento": "1122446688",
+        "titular": "Consumidor Final",
+        "documento": "2222222222",
         "tienda": "TIENDA MERCADO POPULAR",
         "NIT": "101232145",
         "contacto": "3129988776",
@@ -111,8 +111,8 @@ const ejemplos = [
         "tipo": "interno"
     },
     {
-        "titular": "Maria Fernanda Ruiz",
-        "documento": "1102233445",
+        "titular": "Consumidor Final",
+        "documento": "2222222222",
         "tienda": "PEPE GANGA S.A.",
         "NIT": "900120045",
         "contacto": null,
@@ -123,7 +123,7 @@ const ejemplos = [
     },
     {
         "titular": "Consumidor Final",
-        "documento": "1033300001",
+        "documento": "2222222222",
         "tienda": "SÚPER INTER S.A.S.",
         "NIT": "900220011",
         "contacto": null,
