@@ -8,7 +8,7 @@ const ejemplos = [
         "contacto": null,
         "fecha_compra": "2023-05-16",
         "valor_total": "10,200",
-        "prefijo": "2161 180422",
+        "prefijo": "ABC7 - 28491",
         "tipo": "interno"
     },
     {
@@ -19,7 +19,7 @@ const ejemplos = [
         "contacto": "3001234567",
         "fecha_compra": "2025-03-03",
         "valor_total": "22,000.50",
-        "prefijo": "POS1881",
+        "prefijo": "KLM3 - 56724",
         "tipo": "externo"
     },
     {
@@ -30,7 +30,7 @@ const ejemplos = [
         "contacto": null,
         "fecha_compra": "2024-06-12",
         "valor_total": "5,500",
-        "prefijo": "3470 005621",
+        "prefijo": "PQR9 - 14836",
         "tipo": "interno"
     },
     {
@@ -41,19 +41,8 @@ const ejemplos = [
         "contacto": "info@droguerianacional.com",
         "fecha_compra": "2024-05-09",
         "valor_total": "48,900",
-        "prefijo": "R-4521",
+        "prefijo": "DEF2 - 90157",
         "tipo": "interno"
-    },
-    {
-        "titular": "Consumidor Final",
-        "documento": "2222222222",
-        "tienda": "ÉXITO S.A.",
-        "NIT": "890900943",
-        "contacto": "3209876543",
-        "fecha_compra": "2023-11-15",
-        "valor_total": "156,230",
-        "prefijo": "EX-8204",
-        "tipo": "externo"
     },
     {
         "titular": "Consumidor Final",
@@ -63,7 +52,7 @@ const ejemplos = [
         "contacto": null,
         "fecha_compra": "2024-01-27",
         "valor_total": "79,500",
-        "prefijo": "AK-2019",
+        "prefijo": "XYZ8 - 47293",
         "tipo": "interno"
     },
     {

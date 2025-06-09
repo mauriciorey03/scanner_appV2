@@ -290,7 +290,7 @@ function buscarContacto() { console.log('buscarContacto called'); }
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <label for="txtNdoc">Número Documento</label>
 						<div class="input-group">
-                            <input name="txtNdoc" type="text" value="0" maxlength="20" id="txtNdoc" class="form-control" data-toggle="tooltip" data-placement="top" title="" validar="empty|Debe ingresar un número documento" data-original-title="Digita numero sin puntos(.) ni espacios, ni guion(-)">
+                            <input name="txtNdoc" type="text" value="1098123456" maxlength="20" id="txtNdoc" class="form-control" data-toggle="tooltip" data-placement="top" title="" validar="empty|Debe ingresar un número documento" data-original-title="Digita numero sin puntos(.) ni espacios, ni guion(-)">
                             
                         </div>
                         
@@ -311,9 +311,28 @@ function buscarContacto() { console.log('buscarContacto called'); }
                             <i class="fa fa-print"></i> Números Acumulados</a>
                         
                     </div>
-                    <div class="col-md-1 col-sm-6 col-xs-12">
-                        <a href="index.html" class="btn btn-primary" onclick="" style="margin: -30px 20px 10px 25px;"><i class="fa fa-search"></i> Escanear con IA</a>
-                    </div>
+                    <style>
+                        .pulse-glow {
+                            animation: pulseGlow 2s infinite;
+                        }
+                    
+                        @keyframes pulseGlow {
+                            0% {
+                                box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
+                            }
+                    
+                            70% {
+                                box-shadow: 0 0 0 30px rgba(0, 123, 255, 0);
+                            }
+                    
+                            100% {
+                                box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+                            }
+                        }
+                    </style>
+                    <div class="col-md-1 col-sm-6 col-xs-12 pulse-glow">
+    <a href="index.html" class="btn btn-primary" onclick="" style="margin: 0px 0px 0px -20px;"><i class="fa fa-search"></i> Escanear con IA</a>
+</div>
                 </div>
             </div>
         </div>
