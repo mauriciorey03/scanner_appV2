@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Centro de Registro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #204b92;
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 40px 20px 0 20px;
+        }
+        .title {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 18px;
+            font-weight: bold;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            font-weight: 500;
+        }
+        .options {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .option {
+            background: #c4e014;
+            color: #204b92;
+            border-radius: 50px;
+            width: 320px;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 15px rgba(30,30,30,0.14);
+            margin-bottom: 25px;
+            cursor: pointer;
+            transition: box-shadow 0.14s, transform 0.09s;
+            user-select: none;
+        }
+        .option:hover {
+            box-shadow: 0 8px 28px rgba(30,30,30,0.17);
+            transform: translateY(-4px) scale(1.025);
+        }
+        .option svg {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 28px;
+        }
+        .option-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .option-desc {
+            font-size: 1.1rem;
+            margin-top: 5px;
+            color: #204b92;
+            text-align: center;
+        }
+        .footer {
+            position: fixed;
+            bottom: 18px;
+            right: 35px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            opacity: 0.92;
+        }
+        /* MODAL ESTILOS */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0; top: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(32,75,146,0.80);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #fff;
+            color: #204b92;
+            border-radius: 22px;
+            padding: 38px 34px 24px 34px;
+            box-shadow: 0 4px 32px rgba(20,30,50,0.24);
+            text-align: center;
+            min-width: 300px;
+            max-width: 92vw;
+            position: relative;
+            animation: pop 0.25s;
+        }
+        @keyframes pop {
+            0% {transform: scale(0.8);}
+            100% {transform: scale(1);}
+        }
+        .modal-content img {
+            max-width: 250px;
+            width: 60vw;
+            margin-bottom: 14px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            font-size: 1.9rem;
+            color: #204b92;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .modal-title {
+            font-size: 1.28rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        @media (max-width: 1100px) {
+            .options {
+                gap: 20px;
+            }
+            .option {
+                width: 90vw;
+                min-width: 230px;
+                max-width: 340px;
+                height: 260px;
+                padding: 20px 0;
+            }
+            .option svg {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 16px;
+            }
+        }
+        @media (max-width: 700px) {
+            .options {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer {
+                position: static;
+                text-align: center;
+                margin-top: 30px;
+            }
+            .modal-content {
+                padding: 24px 8vw 16px 8vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            ¡Bienvenido(a) a nuestro centro de registro!
+        </div>
+        <div class="subtitle">
+            En la pantalla principal, puedes elegir la opción<br>
+            que necesites:
+        </div>
+        <div class="options">
+            <!-- Opción 3 -->
+            <div class="option" id="optCliente">
+                <!-- SVG Icono Usuario Nuevo -->
+                <svg fill="none" stroke="currentColor" stroke-width="5" viewBox="0 0 64 64">
+                    <circle cx="32" cy="24" r="12" stroke-width="4"/>
+                    <path d="M12 52c0-8.8 31.9-8.8 40 0" stroke-width="4"/>
+                    <circle cx="48" cy="42" r="7" stroke-width="3"/>
+                    <path d="M48 39v6M45 42h6" stroke-width="2.5"/>
+                </svg>
+                <div class="option-title">Registro de<br>Nuevo Cliente</div>
+                <div class="option-desc">¿Es tu primera vez con nosotros?</div>
+            </div>
+            <!-- Opción 2 -->
+            <div class="option" id="optPremios">
+                <!-- SVG Icono Premio -->
+                <svg fill="none" stroke="currentColor" stroke-width="5" viewBox="0 0 64 64">
+                    <rect x="18" y="28" width="28" height="16" rx="4" stroke-width="4"/>
+                    <circle cx="32" cy="20" r="8" stroke-width="4"/>
+                    <polygon points="32,14 34,18 38,19 35,22 36,26 32,24 28,26 29,22 26,19 30,18" fill="none" stroke-width="2"/>
+                </svg>
+                <div class="option-title">Redimir premios</div>
+                <div class="option-desc">¿Listo(a) para canjear tus puntos?</div>
+            </div>
+            <!-- Opción 1 -->
+            <div class="option" id="optFacturas">
+                <!-- SVG Icono Factura -->
+                <svg fill="none" stroke="currentColor" stroke-width="5" viewBox="0 0 64 64">
+                    <rect x="15" y="15" width="30" height="36" rx="4" stroke-width="4"/>
+                    <path d="M20 22h20M20 30h20M20 38h12" stroke-width="3"/>
+                    <circle cx="45" cy="45" r="9" stroke-width="4"/>
+                    <path d="M45 41v5M43 45h4" stroke-width="3"/>
+                </svg>
+                <div class="option-title">Registra facturas</div>
+                <div class="option-desc">¿Tienes una compra que quieres registrar?</div>
+            </div>
+        </div>
+        <img src="img/logo_grande.png" alt="" style="width: 15%; height: auto;">
+    </div>
+    <div class="footer">
+        <a href="privacy.html" style="color:#fff">Consulte nuestra Política de privacidad</a>
+    </div>
+    
+    <!-- MODAL QR REGISTRO -->
+    <div class="modal" id="modalQR">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal" title="Cerrar">&times;</button>
+            <div class="modal-title">Escanea el código QR para registrar tus datos</div>
+            <img src="img/frame.png" alt="Código QR de registro">
+            <div style="margin-top:12px;font-size:1rem;">
+                Usa tu celular para diligenciar tu registro.
+            </div>
+        </div>
+    </div>
+    <script>
+        // Opción 1: Ir a facturas
+        document.getElementById('optFacturas').onclick = function() {
+            window.location.href = "facturas.html";
+        };
+        // Opción 2: Ir a premios
+        document.getElementById('optPremios').onclick = function() {
+            window.location.href = "premios.html";
+        };
+        // Opción 3: Modal QR
+        document.getElementById('optCliente').onclick = function() {
+            document.getElementById('modalQR').style.display = "flex";
+        };
+        document.getElementById('closeModal').onclick = function() {
+            document.getElementById('modalQR').style.display = "none";
+        };
+        // Cerrar modal al hacer click fuera del contenido
+        document.getElementById('modalQR').onclick = function(e) {
+            if (e.target === this) this.style.display = "none";
+        };
+        // Opcional: cerrar con ESC
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('modalQR').style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

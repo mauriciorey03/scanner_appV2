@@ -1,4 +1,4 @@
-// Facturas demo (interna y externa) - Versión con cédula precargada
+// Facturas demo (interna y externa)
 
 // Variables
 const input = document.getElementById('cedulaInput');
@@ -9,111 +9,14 @@ const limpiarBtn = document.getElementById('limpiarBtn');
 const panelFacturas = document.getElementById('panel-facturas');
 const cedulaAsociadaLeft = document.getElementById('cedula-asociada-left');
 const controlesFacturas = document.getElementById('controles-facturas');
-const btnOtraFactura = document.getElementById('btnOtraFactura');
-
 let cedulaActual = "";
 let facturas = [];
-// Data precargada de ejemplos
-const ejemplos = [
-    {
-        "titular": "Consumidor Final",
-        "documento": "2222222222",
-        "tienda": "CADENA COMERCIAL EXITO S.A.S",
-        "NIT": "900262579",
-        "contacto": null,
-        "fecha_compra": "2023-05-16",
-        "valor_total": "10,200",
-        "prefijo": "ABC7 - 28491",
-        "tipo": "interno"
-    },
-    {
-        "titular": "Consumidor Final",
-        "documento": "2222222222",
-        "tienda": "FALABELLA S.A.S.",
-        "NIT": "900123456",
-        "contacto": "3001234567",
-        "fecha_compra": "2025-03-03",
-        "valor_total": "22,000.50",
-        "prefijo": "KLM3 - 56724",
-        "tipo": "externo"
-    },
-    {
-        "titular": "Consumidor Final",
-        "documento": "2222222222",
-        "tienda": "TENNIS S.A.S.",
-        "NIT": "800900123",
-        "contacto": null,
-        "fecha_compra": "2024-06-12",
-        "valor_total": "5,500",
-        "prefijo": "PQR9 - 14836",
-        "tipo": "interno"
-    },
-    {
-        "titular": "Consumidor Final",
-        "documento": "2222222222",
-        "tienda": "DROGUERÍA NACIONAL S.A.",
-        "NIT": "900456789",
-        "contacto": "info@droguerianacional.com",
-        "fecha_compra": "2024-05-09",
-        "valor_total": "48,900",
-        "prefijo": "DEF2 - 90157",
-        "tipo": "interno"
-    },
-    {
-        "titular": "Consumidor Final",
-        "documento": "2222222222",
-        "tienda": "ALKOSTO S.A.S.",
-        "NIT": "900222334",
-        "contacto": null,
-        "fecha_compra": "2024-01-27",
-        "valor_total": "79,500",
-        "prefijo": "XYZ8 - 47293",
-        "tipo": "interno"
-    }
-];
-
-let indiceActual = 0;
-
-// Función para precargar la cédula y mostrar controles automáticamente
-function precargarCedula() {
-    const cedulaPrecargada = "1098123456";
-    
-    // Precargar la cédula en el input
-    input.value = cedulaPrecargada;
-    cedulaActual = cedulaPrecargada;
-    
-    // Actualizar botones
-    actualizarBotones();
-    
-    // Simular confirmación automática
-    setTimeout(() => {
-        confirmarCedulaAutomaticamente();
-    }, 500);
-}
-
-// Función para confirmar cédula automáticamente
-function confirmarCedulaAutomaticamente() {
-    // Ocultar formulario de cédula
-    document.getElementById('form-cedula-area').classList.add('hidden');
-    
-    // Mostrar controles y panel
-    controlesFacturas.classList.remove('hidden');
-    panelFacturas.classList.remove('hidden');
-    
-    // Actualizar cédula asociada
-    cedulaAsociadaLeft.innerText = cedulaActual;
-    
-    // El botón inicialmente dice "Añadir factura"
-    btnOtraFactura.textContent = "Añadir factura";
-}
 
 // Habilitar botones
 function actualizarBotones() {
     confirmarBtn.disabled = !(input.value.length >= 6);
     limpiarBtn.disabled = !(input.value.length >= 1);
 }
-
-// Event listeners para el teclado numérico
 keys.forEach(key => {
     key.addEventListener('click', () => {
         if (input.value.length < input.maxLength) {
@@ -122,20 +25,17 @@ keys.forEach(key => {
         }
     });
 });
-
 backspace.addEventListener('click', () => {
     input.value = input.value.slice(0, -1);
     actualizarBotones();
 });
-
 limpiarBtn.addEventListener('click', () => {
     input.value = "";
     actualizarBotones();
 });
-
 input.addEventListener('input', actualizarBotones);
 
-// Confirmar cédula manualmente (si el usuario modifica la cédula)
+// Confirmar cédula
 confirmarBtn.addEventListener('click', () => {
     if (input.value.length < 6) {
         alert("Por favor, ingresa un número de cédula válido.");
@@ -143,15 +43,11 @@ confirmarBtn.addEventListener('click', () => {
     }
     cedulaActual = input.value;
     facturas = [];
-    indiceActual = 0;
-    
     document.getElementById('form-cedula-area').classList.add('hidden');
     controlesFacturas.classList.remove('hidden');
     panelFacturas.classList.remove('hidden');
     cedulaAsociadaLeft.innerText = cedulaActual;
-    
-    // Resetear el botón a "Añadir factura"
-    btnOtraFactura.textContent = "Añadir factura";
+    anadirFactura();
 });
 
 function scrollToLastInvoice() {
@@ -160,24 +56,17 @@ function scrollToLastInvoice() {
         const lista = document.getElementById('factura-lista');
         
         if (facturesContainer && lista.children.length > 0) {
+            // Hacer scroll en el contenedor que tiene el scroll
             facturesContainer.scrollTop = facturesContainer.scrollHeight;
         }
     }, 200);
 }
 
-// Añadir factura - Ahora simplificado
-btnOtraFactura.addEventListener('click', () => {
-    anadirFactura();
-    
-    // Cambiar texto del botón después de la primera factura
-    if (btnOtraFactura.textContent === "Añadir factura") {
-        btnOtraFactura.textContent = "Añadir otra factura";
-    }
-});
-
-// Función para añadir factura
+// Añadir otra factura -
+document.getElementById('btnOtraFactura').addEventListener('click', anadirFactura);
+let indiceActual = 0;
 function anadirFactura() {
-    const ejemplo = ejemplos[indiceActual % ejemplos.length];
+    const ejemplo = ejemplos[indiceActual];
     const factura = {...ejemplo, cedula: cedulaActual};
     facturas.push(factura);
     indiceActual++;
@@ -223,6 +112,7 @@ function renderFacturas() {
         lista.appendChild(div);
     });
     scrollToLastInvoice();
+
 }
 
 // === Confirmar y finalizar ===
@@ -271,9 +161,5 @@ document.getElementById('btnFinalizar').addEventListener('click', () => {
         window.location.href = 'WeGrowFacturas.html';
     }, 4000);
 });
-
-// Inicializar la aplicación
-document.addEventListener('DOMContentLoaded', () => {
-    actualizarBotones();
-    precargarCedula();
-});
+// Inicial
+actualizarBotones();

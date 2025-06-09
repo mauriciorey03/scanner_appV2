@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Premios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #eaeaea;
+            color: #204b92;
+        }
+        .main-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .left-panel {
+            background: #204b92;
+            color: #fff;
+            flex: 0.9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            padding-right: 38px;
+            min-width: 300px;
+        }
+        .left-content {
+            max-width: 430px;
+        }
+        .left-panel h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.09;
+        }
+        .left-panel p {
+            font-size: 1.15rem;
+            color: #d8e2f1;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        
+        /* Estilos para la flecha de retorno */
+        .back-arrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+        
+        .back-arrow:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateX(-5px);
+        }
+        
+        .back-arrow svg {
+            width: 32px;
+            height: 32px;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-arrow:hover svg {
+            transform: translateX(-3px);
+        }
+        
+        .back-arrow span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .right-panel {
+            background: #efefef;
+            flex: 1.7;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 40px 4vw 40px 2vw;
+            min-width: 380px;
+        }
+        .categoria {
+            margin-bottom: 42px;
+        }
+        .cat-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 15px;
+        }
+        .cat-header svg {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+        .cat-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #204b92;
+        }
+        .premios-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        .premio-card {
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 2px 14px rgba(60,60,90,0.09);
+            padding: 22px 28px 16px 28px;
+            width: 210px;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            border: 2.5px solid #c4e014;
+        }
+        .premio-nombre {
+            font-size: 1.09rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .premio-puntos {
+            color: #c4e014;
+            font-weight: 700;
+            font-size: 1.08rem;
+            margin-bottom: 8px;
+        }
+        .premio-btn {
+            margin-top: 9px;
+            padding: 7px 18px;
+            background: #c4e014;
+            color: #204b92;
+            border: none;
+            border-radius: 7px;
+            font-size: 1rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .premio-btn:hover {
+            background: #d3f324;
+        }
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .left-panel, .right-panel {
+                min-width: unset;
+                width: 100vw;
+            }
+            .right-panel {
+                padding: 30px 3vw 30px 3vw;
+            }
+        }
+        @media (max-width: 600px) {
+            .premios-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            .premio-card {
+                width: 85vw;
+            }
+            .right-panel {
+                padding: 22px 1vw;
+            }
+            .back-arrow {
+                padding: 12px 16px;
+            }
+            .back-arrow svg {
+                width: 28px;
+                height: 28px;
+            }
+            .back-arrow span {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Panel Izquierdo -->
+        <div class="left-panel">
+            <div class="left-content">
+                <img src="img/logo_grande.png" alt="" style="width: 50%; height: auto;">
+                <h2>
+                    Catálogo de Premios
+                </h2>
+                <p>
+                    Explora los premios disponibles y redime tus puntos según la categoría.<br>
+                    Selecciona el premio que más te guste.
+                </p>
+                <!-- Flecha de retorno -->
+                <div class="back-arrow" onclick="goBack()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Regresar</span>
+                </div>
+            </div>
+        </div>
+        <!-- Panel Derecho -->
+        <div class="right-panel">
+            <!-- Categoría: Gastronomía -->
+            <div class="categoria">
+                <div class="cat-header">
+                    <!-- Icono Comida -->
+                    <svg viewBox="0 0 64 64" fill="none" stroke="#c4e014" stroke-width="3">
+                        <ellipse cx="32" cy="44" rx="24" ry="10" fill="#eaeaea" stroke="#c4e014"/>
+                        <rect x="29" y="16" width="6" height="25" rx="3" fill="#c4e014" stroke="#c4e014"/>
+                        <path d="M32 16V10M28 14C28 12 36 12 36 14" stroke="#204b92" stroke-width="2"/>
+                    </svg>
+                    <span class="cat-title">Gastronomía</span>
+                </div>
+                <div class="premios-list">
+                    <div class="premio-card">
+                        <div class="premio-nombre">Combo Hamburguesa</div>
+                        <div class="premio-puntos">350 pts</div>
+                        <button class="premio-btn">Canjear</button>
+                    </div>
+                    <div class="premio-card">
+                        <div class="premio-nombre">Pizza Mediana</div>
+                        <div class="premio-puntos">420 pts</div>
+                        <button class="premio-btn">Canjear</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Categoría: Tecnología -->
+            <div class="categoria">
+                <div class="cat-header">
+                    <!-- Icono Tecnología -->
+                    <svg viewBox="0 0 64 64" fill="none" stroke="#c4e014" stroke-width="3">
+                        <rect x="14" y="20" width="36" height="28" rx="5" fill="#eaeaea" stroke="#c4e014"/>
+                        <rect x="24" y="32" width="16" height="6" rx="2" fill="#c4e014" stroke="#204b92"/>
+                        <circle cx="32" cy="28" r="2" fill="#c4e014"/>
+                    </svg>
+                    <span class="cat-title">Tecnología</span>
+                </div>
+                <div class="premios-list">
+                    <div class="premio-card">
+                        <div class="premio-nombre">Audífonos Bluetooth</div>
+                        <div class="premio-puntos">750 pts</div>
+                        <button class="premio-btn">Canjear</button>
+                    </div>
+                    <div class="premio-card">
+                        <div class="premio-nombre">Powerbank</div>
+                        <div class="premio-puntos">900 pts</div>
+                        <button class="premio-btn">Canjear</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Categoría: Hogar -->
+            <div class="categoria">
+                <div class="cat-header">
+                    <!-- Icono Hogar -->
+                    <svg viewBox="0 0 64 64" fill="none" stroke="#c4e014" stroke-width="3">
+                        <polygon points="32,12 12,32 16,32 16,52 48,52 48,32 52,32 32,12" fill="#eaeaea" stroke="#c4e014"/>
+                        <rect x="26" y="40" width="12" height="12" rx="2" fill="#c4e014" stroke="#204b92"/>
+                    </svg>
+                    <span class="cat-title">Hogar</span>
+                </div>
+                <div class="premios-list">
+                    <div class="premio-card">
+                        <div class="premio-nombre">Set Tazas Decorativas</div>
+                        <div class="premio-puntos">200 pts</div>
+                        <button class="premio-btn">Canjear</button>
+                    </div>
+                    <div class="premio-card">
+                        <div class="premio-nombre">Cojín Relajante</div>
+                        <div class="premio-puntos">300 pts</div>
+                        <button class="premio-btn">Canjear</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Puedes agregar más categorías aquí -->
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            // Opción 1: Ir a la página anterior del historial
+            window.history.back();
+            
+            // Opción 2: Si quieres ir a una página específica, descomenta la línea siguiente:
+            // window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
